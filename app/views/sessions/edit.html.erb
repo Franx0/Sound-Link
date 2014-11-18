@@ -1,0 +1,12 @@
+<h1>EDIT YOUR SESSION</h1>
+
+<%= form_for [@user, @session] do |f| %>
+    <div class="field">
+        <%= f.label :session_name %></br>
+        <%= f.text_field :session_name %></br>
+        <%= f.label :description %></br>
+        <%= f.text_field :description %></br>
+    </div>
+<%= f.submit "Update" %>
+<% end %>
+<%= link_to (submit_tag "Cancel"), user_sessions_path(@user) %>

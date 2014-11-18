@@ -1,0 +1,18 @@
+<h1>Welcome <%= @user.user_name %></h1>
+<h1>Your sessions</h1>
+
+<% @user.sessions.each do |session| %>
+    <h3><%= session.session_name %></h1>
+    <p><%= session.description %></p>
+    <div>
+        <ul>
+            <% @tracks.each do |track| %>
+                <li><audio id="player" src='<%= track.audio %>' controls></audio><%= track.audio_file_name %>
+        </ul>
+            <% end %>
+    </div>
+    <%= link_to 'Edit', edit_user_session_path(@user, session) %>
+    <%= link_to 'Remove session', users_sessions_path(@user.session.id), method: :delete, data: {confirm: "Are you sure?"} %>
+<% end %>
+<%= link_to 'Create new session', new_user_session_path %>
+

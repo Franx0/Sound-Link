@@ -1,0 +1,23 @@
+<% if flash[:error] %>
+  <%= flash[:error] %>
+<% end %>
+
+<% if @session.errors.any? %>
+  <ul>
+    <% @session.errors.full_messages.each do |error_message| %>
+    <li> <%= error_message %> </li>
+    <% end %> 
+  </ul>
+<% end %>
+
+<%= form_for [@user, @session] do |f| %>
+  <div class="field">
+    <%= f.label :session_name %>
+    <%= f.text_field :session_name %>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
