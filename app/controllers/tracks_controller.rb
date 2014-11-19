@@ -15,7 +15,7 @@ class TracksController < ApplicationController
   # GET /tracks/new
   def new
     @user = User.find(params[:user_id]) 
-    @session = @user.sessions.find(params[:user_id])
+    @session = @user.sessions.find(params[:session_id])
     @track = Track.new
   end
   # GET /tracks/1/edit
@@ -27,7 +27,7 @@ class TracksController < ApplicationController
   def create
     @user = User.find(params[:user_id]) 
     @session = @user.sessions.find(params[:session_id])
-    @track = Track.new(track_params)
+    @track = @session.tracks.new(track_params)
     respond_to do |format|
       if @track.save
         format.html { redirect_to user_session_path(@user, @session), notice: 'Track was successfully created.' }
@@ -73,4 +73,5 @@ class TracksController < ApplicationController
     def track_params
       params.require(:track).permit(:audio)
     end
+  
 end

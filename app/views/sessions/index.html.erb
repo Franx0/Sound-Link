@@ -8,7 +8,7 @@
     <p><%= session.description %></p>
     <div>
         <ul>
-            <% @tracks.each do |track| %>
+            <% session.tracks.each do |track| %>
                 <li><audio id="player" src='<%= track.audio %>' controls></audio><%= track.audio_file_name %>
         </ul>
             <% end %>
@@ -17,5 +17,5 @@
     <%= link_to 'Remove session', user_session_path(@user, session), method: :delete, data: {confirm: "Are you sure?"} %>
 <% end %></br>
 <%= link_to 'Create new session', new_user_session_path %>
-<%= link_to "Cancel", user_sessions_path(@user) %>
+<%= link_to "Come back to your profile", user_path(@user) %>
 

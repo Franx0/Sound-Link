@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     #sessions#show redirigir a esta ruta al pinchar sobre la session
     def show
         @user = User.find(params[:user_id]) 
-        @session = @user.sessions.all
+        @session = @user.sessions.find(params[:id])
         @tracks = Track.all
     end
 

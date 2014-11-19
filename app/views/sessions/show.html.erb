@@ -1,6 +1,12 @@
-<h1><%= @session.last.session_name %> is ready</h1>
+<h1><%= @session.session_name %> is ready</h1>
 <h1>Enjoy it!</h1>
-<h3><%= @session.last.session_name %></h1>
-<p><%= @session.last.description %></p>
-<%= link_to 'New Track', new_user_session_track_path(@user, @session, @track) %>
+<h3><%= @session.session_name %></h1>
+<p><%= @session.description %></p>
+<%= link_to 'Add new track', new_user_session_track_path(@user, @session, @track) %>
 <%= link_to "Go back to your sessions!", user_sessions_path(@user) %>
+
+<ul>
+    <% @session.tracks.each do |track| %>
+        <li><audio id="player" src='<%= track.audio %>' controls></audio><%= track.audio_file_name %>
+    <% end %>
+</ul>
