@@ -4,10 +4,10 @@
 <h3><%= @session.session_name %></h1>
 <p><%= @session.description %></p>
 
-<ul><% @user.sessions.each do |session| %>
-    <h3><%= session.session_name %></h1>
-    <p><%= session.description %></p>
-    <% end %>
+<ul>
+    <h3><%= @user.sessions.last.session_name %></h1>
+    <p><%= @user.sessions.last.description %></p>
+
     <% @session.tracks.each do |track| %>
         <li><audio id="player" src='<%= track.audio %>' controls></audio><%= track.audio_file_name %>
     <% end %>
