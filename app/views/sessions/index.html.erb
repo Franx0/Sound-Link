@@ -1,6 +1,8 @@
 <h1>Welcome <%= @user.user_name %></h1>
 <h1>Your sessions</h1>
-
+<% if flash[:notice] %>
+    <%= flash[:notice] %>
+<% end %>
 <% @user.sessions.each do |session| %>
     <h3><%= session.session_name %></h1>
     <p><%= session.description %></p>
@@ -12,7 +14,8 @@
             <% end %>
     </div>
     <%= link_to 'Edit', edit_user_session_path(@user, session) %>
-    <%= link_to 'Remove session', users_sessions_path(@user.session.id), method: :delete, data: {confirm: "Are you sure?"} %>
-<% end %>
+    <%= link_to 'Remove session', user_session_path(@user, session), method: :delete, data: {confirm: "Are you sure?"} %>
+<% end %></br>
 <%= link_to 'Create new session', new_user_session_path %>
+<%= link_to "Cancel", user_sessions_path(@user) %>
 

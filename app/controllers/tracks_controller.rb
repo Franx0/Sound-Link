@@ -14,9 +14,10 @@ class TracksController < ApplicationController
 
   # GET /tracks/new
   def new
+    @user = User.find(params[:user_id]) 
+    @session = @user.sessions.find(params[:user_id])
     @track = Track.new
   end
-
   # GET /tracks/1/edit
   def edit
   end
@@ -24,11 +25,12 @@ class TracksController < ApplicationController
   # POST /tracks
   # POST /tracks.json
   def create
+    @user = User.find(params[:user_id]) 
+    @session = @user.sessions.find(params[:session_id])
     @track = Track.new(track_params)
-
     respond_to do |format|
       if @track.save
-        format.html { redirect_to @track, notice: 'Track was successfully created.' }
+        format.html { redirect_to user_session_path(@user, @session), notice: 'Track was successfully created.' }
         format.json { render :show, status: :created, location: @track }
       else
         format.html { render :new }

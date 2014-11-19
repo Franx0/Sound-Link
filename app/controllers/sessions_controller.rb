@@ -2,8 +2,14 @@ class SessionsController < ApplicationController
 
     def index
          @user = User.find(params[:user_id]) 
-         @session = @user.sessions.find(params[:user_id])
+         @session = @user.sessions.all
          @tracks = Track.all
+    end
+    #sessions#show redirigir a esta ruta al pinchar sobre la session
+    def show
+        @user = User.find(params[:user_id]) 
+        @session = @user.sessions.all
+        @tracks = Track.all
     end
 
     def new
@@ -15,11 +21,11 @@ class SessionsController < ApplicationController
     def create
         @user = User.find(params[:user_id]) 
         @session = @user.sessions.new sessions_params
-        @tracks = Track.all 
+        @tracks = Track.new 
                                                  
         if @session.save 
             flash[:notice] = "You have created a new session"
-            redirect_to user_sessions_path(@user, @session)
+            redirect_to user_session_path(@user, @session)
         else
             flash[:error] = "You could not create a new session"
             render 'new'
@@ -49,8 +55,9 @@ class SessionsController < ApplicationController
     end
 
     def destroy
+        @user = User.find(params[:user_id])
         @session = Session.destroy(params[:id])
-        redirect_to user_sessions_path(@user, @session)
+        redirect_to user_sessions_path(@user)
     end
 
     private

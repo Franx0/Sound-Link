@@ -1,4 +1,4 @@
-<%= form_for(@track) do |f| %>
+<%= form_for [@user, @session, @track] do |f| %>
   <% if @track.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@track.errors.count, "error") %> This file can not be saved</h2>
@@ -19,3 +19,4 @@
     <%= f.submit %>
   </div>
 <% end %>
+
