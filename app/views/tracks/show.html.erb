@@ -5,7 +5,7 @@
   <%= @track.audio_file_name %>
 </p>
 
-<audio id="player" src='<%= @track.audio %>' controls></audio>
+<audio id='<%= session.id %>' class="player" src='<%= @track.audio %>' controls></audio>
 
 <%= link_to 'Edit', edit_track_path(@track) %> |
 <%= link_to 'Back', tracks_path %>

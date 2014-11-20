@@ -1,15 +1,18 @@
 <h1><%= @user.user_name %></h1>
 
 <h1>Your last session</h1>
-<h3><%= @session.session_name %></h1>
-<p><%= @session.description %></p>
 
-<ul>
-    <h3><%= @user.sessions.last.session_name %></h1>
-    <p><%= @user.sessions.last.description %></p>
+<h2><%= @user.sessions.last.session_name %></h2>
+<p><%= @user.sessions.last.description %></p>
 
-    <% @session.tracks.each do |track| %>
-        <li><audio id="player" src='<%= track.audio %>' controls></audio><%= track.audio_file_name %>
-    <% end %>
-</ul>
+<% @session.tracks.each do |track| %>
+    <ul>
+        <% if track.audio_content_type!=nil %>
+            <li><audio id='<%= session.id %>' class="player" src='<%= track.audio %>' controls></audio><%= track.audio_file_name %>
+        <% else %>
+        <p>This session doesn't contain any track!</p>
+        <% end %>
+    </ul>
+<% end %>
+
 <%= link_to "Go to your sessions!", user_sessions_path(@user) %>

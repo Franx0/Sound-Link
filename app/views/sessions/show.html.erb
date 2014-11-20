@@ -7,6 +7,6 @@
 
 <ul>
     <% @session.tracks.each do |track| %>
-        <li><audio id="player" src='<%= track.audio %>' controls></audio><%= track.audio_file_name %>
+        <li><audio id='<%= session.id %>' class="player" src='<%= track.audio %>' controls></audio><%= track.audio_file_name %>
     <% end %>
 </ul>

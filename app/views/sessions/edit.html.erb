@@ -11,11 +11,11 @@
 <%= link_to 'Add new Track', new_user_session_track_path(@user, @session) %>
 <%= f.submit "Update" %>
 <% end %>
-<%= link_to "Cancel", user_session_path(@user, @session) %>
+<%= link_to "Cancel", user_sessions_path(@user) %>
 
 <ul>
     <% @session.tracks.each do |track| %>
-        <li><audio id="player" src='<%= track.audio %>' controls></audio><%= track.audio_file_name %>
+        <li><audio id='<%= session.id %>' class="player" src='<%= track.audio %>' controls></audio><%= track.audio_file_name %>
     <% end %>
 </ul>
 

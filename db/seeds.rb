@@ -6,6 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-user = User.create(user_name: 'Pablito', nickname:'gitmaster')
-session = Session.create(session_name: 'JamSession', description: 'guitars, saxo and drums', user_id: user.id, from_date: Time.now)
-track = Track.create(audio_file_name: 'Gold on the ceiling', session_id: session.id)
+user = User.create(user_name: 'Fran', nickname:'Franx0')
+session = Session.create(session_name: 'JamSession', description: 'guitars, saxos and drums', user_id: user.id, from_date: Time.now)
+
+
+user2 = User.create(user_name: 'Ana', nickname:'Anutxa')
+session2 = Session.create(session_name: 'VocalSession', description: 'vocal', user_id: user2.id, from_date: Time.now)
+

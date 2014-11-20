@@ -5,7 +5,7 @@
 <table>
     <% @tracks.each do |track| %>
       <tr>
-        <td><audio id="player" src='<%= track.audio %>' controls></audio></td>
+        <td><audio id='<%= session.id %>' class="player" src='<%= track.audio %>' controls></audio></td>
         <td><%= track.audio_file_name %></td>
         <td><%= link_to 'Show', track %></td>
         <td><%= link_to 'Edit', edit_track_path(track) %></td>
