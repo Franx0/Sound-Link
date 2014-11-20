@@ -9,7 +9,7 @@
         <ul>
             <% session.tracks.each do |track| %>
                 <% if track.audio_content_type!=nil %>
-                    <li><audio id='<%= session.id %>' class="player" src='<%= track.audio %>' controls></audio><%= track.audio_file_name %>
+                    <li><audio id='<%= session.id %>' class="player" src='<%= track.audio %>' controls></audio><%= track.audio_file_name %><input id='<%= session.id %>' class="time" type="number" value=0>
                 <% else %>
                     <p>There isn't any record in your session</p>
                     <% end %>
