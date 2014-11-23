@@ -56,6 +56,9 @@ class TracksController < ApplicationController
   # DELETE /tracks/1
   # DELETE /tracks/1.json
   def destroy
+    #@user = User.find(params[:user_id])
+    #@session = @user.sessions.find(params[:session_id])
+    #@track = @session.tracks.find(params[:id])
     @track.destroy
     respond_to do |format|
       format.html { redirect_to tracks_url, notice: 'Track was successfully destroyed.' }
