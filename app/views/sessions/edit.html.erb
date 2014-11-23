@@ -1,23 +1,30 @@
 <h1>EDIT YOUR SESSION</h1>
 
-<%= form_for [@user, @session] do |f| %>
-    <div class="field">
-        <%= f.label :session_name %></br>
-        <%= f.text_field :session_name %></br>
-        <%= f.label :description %></br>
-        <%= f.text_field :description %></br>
-    </div>
+<section id='session'>
+    <%= form_for [@user, @session] do |f| %>
+        <div class="field">
+            <%= f.label :session_name %></br>
+            <%= f.text_field :session_name %></br>
+            <%= f.label :description %></br>
+            <%= f.text_area(:description, size:'50x10') %></br>
+        </div>
 
-<%= link_to 'Add new Track', new_user_session_track_path(@user, @session) %>
-<%= f.submit "Update" %>
-<% end %>
-<%= link_to "Cancel", user_sessions_path(@user) %>
-
-<ul>
-    <% @session.tracks.each do |track| %>
-        <li><audio id='<%= session.id %>' class="player" src='<%= track.audio %>' controls></audio><%= track.audio_file_name %><%= link_to 'Remove track', user_session_track_path(@user, session, track), method: :delete, data: {confirm: "Are you sure?"} %>
-            <input id='<%= session.id %>' class="time" type="number" value=0>
+        <%= link_to 'Add new Track', new_user_session_track_path(@user, @session), :class => 'trackname' %>
+        <%= f.submit "Update", :class => 'button' %>
     <% end %>
-</ul>
 
+    <ul>
+        <% @session.tracks.each do |track| %>
+            <% if track.audio_content_type!=nil %>
+                <li>
+                    <p class='trackname'><%= track.audio_file_name %></p>
+                    <audio id='<%= session.id %>' class="player" src='<%= track.audio %>' controls></audio>
+                    <input id='<%= session.id %>' class="time" type="number" value=0>seg.</input>
+            <% else %>
+                <p>There isn't any record in your session</p>
+            <% end %>
+        <% end %>
+    </ul>
+    <%= link_to "Cancel", user_sessions_path(@user), :class => 'trackname' %>
+</section>
 

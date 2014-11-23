@@ -1,31 +1,35 @@
 <header>
-    <h2>Welcome <%= @user.user_name %></h2>
+    <p>Welcome <%= @user.user_name %></p>
     <h1>Sound-Link</h1>
 </header>
 
-<h2>Your last sessions</h2>
+<h1>Your last sessions</h1>
 
+<% if flash[:notice] %>
+    <%= flash[:notice] %>
+<% end %>
 
-<% @user.sessions.each do |session| %>
 <section id='session'>
-    <h3><%= session.session_name %></h1>
-    <p><%= session.description %></p>
+    <h3><%= @user.sessions.last.session_name %></h3>
+    <div id='description'>
+        <p><%= @user.sessions.last.description %></p>
+    </div>
+
+    <% @user.sessions.last.tracks.each do |track| %>
         <ul>
-            <% session.tracks.each do |track| %>
-                <% if track.audio_content_type!=nil %>
-                    <li>
-                        <%= track.audio_file_name %></br>
-                        <audio id='<%= session.id %>' class="player" src='<%= track.audio %>' controls></audio>
-                        <input id='<%= session.id %>' class="time" type="number" value=0>seg.</input>
-                <% else %>
-                    <p>There isn't any record in your session</p>
-                <% end %>
+            <% if track.audio_content_type!=nil %>
+                <li>
+                    <p class='trackname'><%= track.audio_file_name %></p>
+                    <audio id='<%= session.id %>' class="player" src='<%= track.audio %>' controls></audio>
+            <% else %>
+                <p>This session doesn't contain any track!</p>
             <% end %>
         </ul>
+    <% end %>
     <div id='<%= session.id %>' class='btn-play button'>Play session</div>
     <div id='<%= session.id %>' class='btn-pause button'>Pause session</div>
     <div id='<%= session.id %>' class='btn-stop button'>Stop session</div>
 </section>
-<% end %></br>
+    
 
 <%= link_to "Go to your sessions!", user_sessions_path(@user) %>

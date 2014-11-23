@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
                                                  
         if @session.save 
             flash[:notice] = "You have created a new session"
-            redirect_to user_session_path(@user, @session)
+            redirect_to edit_user_session_path(@user, @session)
         else
             flash[:error] = "You could not create a new session"
             render 'new'

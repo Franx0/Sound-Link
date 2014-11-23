@@ -5,22 +5,56 @@ body{
 
 #session{
     width: 500px;
-    margin: 0 auto;
+    margin: 5px auto;
     background-color: #E8D5A3;
-    border: solid black;
+    border: solid #2B271D;
     border-radius: 10px;
 }
+ #session h3{
+    margin: 5px 0px 0px 25px;
+ }
 
-#session input{
+#description{
+    width: 450px;
+    display: block;
+    margin: 5px auto;
+    padding: 3px;
+    background-color: #E8DAB5;
+    border-radius: 10px;
+    word-wrap: break-word;
+}   
+
+.trackname {
+    margin: 5px 0px 0px 25px;
+}
+
+#session audio{
+    margin: 5px 0px 0px 25px;
+}
+
+.time{
     width: 40px;
 }
 
 .button{
-    width: 100px;
+    width: 110px;
     height: 20px;
     display: inline-block;
-    border: 1px, solid black;
+    margin: 5px 3px;
+    border: solid #2B271D 2px;
     border-radius: 15px;
     background-color: #E8DAB5;
     text-align: center;
+    word-wrap: break-word;
+    text-decoration:none; 
+    cursor: pointer;
+}
+
+.field{
+    width: 450px;
+    display: block;
+    margin: 5px auto;
+    padding: 3px;
+    border-radius: 10px;
+    word-wrap: break-word;
 }
