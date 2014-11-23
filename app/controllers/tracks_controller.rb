@@ -30,7 +30,7 @@ class TracksController < ApplicationController
     @track = @session.tracks.new(track_params)
     respond_to do |format|
       if @track.save
-        format.html { redirect_to user_session_path(@user, @session), notice: 'Track was successfully created.' }
+        format.html { redirect_to edit_user_session_path(@user, @session), notice: 'Track was successfully created.' }
         format.json { render :show, status: :created, location: @track }
       else
         format.html { render :new }
@@ -56,12 +56,11 @@ class TracksController < ApplicationController
   # DELETE /tracks/1
   # DELETE /tracks/1.json
   def destroy
-    #@user = User.find(params[:user_id])
-    #@session = @user.sessions.find(params[:session_id])
-    #@track = @session.tracks.find(params[:id])
+    @user = User.find(params[:user_id]) 
+    @session = @user.sessions.find(params[:id])
     @track.destroy
     respond_to do |format|
-      format.html { redirect_to tracks_url, notice: 'Track was successfully destroyed.' }
+      format.html { redirect_to edit_user_session_path(@user, @session), notice: 'Track was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

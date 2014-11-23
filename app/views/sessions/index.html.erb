@@ -11,11 +11,10 @@
                 <% if track.audio_content_type!=nil %>
                     <li>
                         <audio id='<%= session.id %>' class="player" src='<%= track.audio %>' controls></audio><%= track.audio_file_name %>
-                        <%= link_to 'Delete', track, method: :delete, data: { confirm: 'Are you sure?' } %>
                         <input id='<%= session.id %>' class="time" type="number" value=0>
                 <% else %>
                     <p>There isn't any record in your session</p>
-                    <% end %>
+                <% end %>
             <% end %>
         </ul>
 <div id='<%= session.id %>' class='btn-play' style='width: 30px; height: 10px; border: solid black'></div>

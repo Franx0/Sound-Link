@@ -1,0 +1,26 @@
+body{
+    width: 1980px;
+    margin: 0 auto;
+}
+
+#session{
+    width: 500px;
+    margin: 0 auto;
+    background-color: #E8D5A3;
+    border: solid black;
+    border-radius: 10px;
+}
+
+#session input{
+    width: 40px;
+}
+
+.button{
+    width: 100px;
+    height: 20px;
+    display: inline-block;
+    border: 1px, solid black;
+    border-radius: 15px;
+    background-color: #E8DAB5;
+    text-align: center;
+}
