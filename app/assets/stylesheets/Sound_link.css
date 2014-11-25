@@ -6,6 +6,8 @@ body{
 #session{
     width: 500px;
     margin: 5px auto;
+    display: inline-block;
+    vertical-align: top;
     background-color: #E8D5A3;
     border: solid #2B271D;
     border-radius: 10px;

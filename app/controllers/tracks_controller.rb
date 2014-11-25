@@ -57,7 +57,8 @@ class TracksController < ApplicationController
   # DELETE /tracks/1.json
   def destroy
     @user = User.find(params[:user_id]) 
-    @session = @user.sessions.find(params[:id])
+    @session = @user.sessions.find(params[:session_id])
+    @track = @session.tracks.find(params[:id])
     @track.destroy
     respond_to do |format|
       format.html { redirect_to edit_user_session_path(@user, @session), notice: 'Track was successfully destroyed.' }
