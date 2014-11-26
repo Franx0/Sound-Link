@@ -1,7 +1,7 @@
 var container = document.getElementById('container');
 var playRecord = document.getElementById('record_button');
 var stopRecord = document.getElementById('stop_button');
-
+var saveRecord = document.getElementById('submit');
 
 var getUserMedia = (navigator.getUserMedia || 
                     navigator.webkitGetUserMedia || 
@@ -19,16 +19,20 @@ var userMediaCallback = function(stream){
         //player.muted = true;
 
         // "audio" is a default type
-        recorder = winRecordRTC(stream, 
+        recorder = window.RecordRTC(stream, 
             {type: 'audio'
         });
 
     playRecord.addEventListener('click', function(){
+        playRecord.className = ('hidden button');
+        stopRecord.className = ('button');
         recorder.startRecording();
     });
 
     stopRecord.addEventListener('click', function(){
         recorder.stopRecording(function(audioURL){
+            playRecord.className = ('button');
+            stopRecord.className = ('hidden button')
             var player = new Audio(audioURL);
             player.controls = true;       
             container.appendChild(player);
@@ -46,3 +50,22 @@ function record() {
 };
 
 $('document').ready(record);
+
+//Save records with paperclip
+$("#submit").on("click", function() {
+    var data = new FormData();
+
+    data.append("track[audio]", recorder.getBlob(), (new Date()).getTime() + ".webm");
+
+    var oReq = new XMLHttpRequest();
+    oReq.open("POST", "./tracks");
+    oReq.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+    oReq.send(data);
+    oReq.onload = function(oEvent) {
+        if (oReq.status == 200) {
+            console.log("Uploaded");
+        } else {
+            console.log("Error " + oReq.status + " occurred uploading your file.");
+        }
+    };
+});

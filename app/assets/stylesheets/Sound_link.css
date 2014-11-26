@@ -52,6 +52,10 @@ body{
     cursor: pointer;
 }
 
+.hidden{
+    display: none;
+}
+
 .field{
     width: 450px;
     display: block;
