@@ -14,7 +14,7 @@
         <% session.tracks.each do |track| %>
             <% if track.audio_content_type!=nil %>
                 <li>
-                    <p class='trackname'><%= track.audio_file_name %></p>
+                    <p class='trackname'><%= track.name %></p>
                     <audio id='<%= session.id %>' class="player" src='<%= track.audio %>' controls></audio>
                     <input id='<%= session.id %>' class="time" type="number" value=0>seg.</input>
             <% else %>

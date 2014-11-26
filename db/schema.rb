@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141118163039) do
+ActiveRecord::Schema.define(version: 20141126105835) do
 
   create_table "sessions", force: true do |t|
     t.string   "session_name"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20141118163039) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "session_id"
+    t.string   "name"
   end
 
   create_table "users", force: true do |t|

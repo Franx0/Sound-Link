@@ -39,7 +39,7 @@ body{
 }
 
 .button{
-    width: 110px;
+    /*width: 110px;*/
     height: 20px;
     display: inline-block;
     margin: 5px 3px;
@@ -50,6 +50,7 @@ body{
     word-wrap: break-word;
     text-decoration:none; 
     cursor: pointer;
+    /*overflow: auto;*/
 }
 
 .hidden{

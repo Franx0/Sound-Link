@@ -2,7 +2,7 @@
 
 <p>
   <strong>Audio:</strong>
-  <%= @track.audio_file_name %>
+  <%= @track.name %>
 </p>
 
 <audio id='<%= session.id %>' class="player" src='<%= @track.audio %>' controls></audio>

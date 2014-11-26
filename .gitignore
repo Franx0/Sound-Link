@@ -14,3 +14,8 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+$ git rm -f db/*.sqlite3
+$ echo '*.sqlite3' >> .gitignore
+$ git add .gitignore
+$ git commit -m "ignored sqlite databases"

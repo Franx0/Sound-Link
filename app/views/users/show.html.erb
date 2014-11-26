@@ -9,6 +9,8 @@
     <%= flash[:notice] %>
 <% end %>
 
+<%= link_to "Go to your sessions!", user_sessions_path(@user) %></br>
+
 <section id='session'>
     <h3><%= @user.sessions.last.session_name %></h3>
     <div id='description'>
@@ -31,10 +33,6 @@
     <div id='<%= session.id %>' class='btn-stop button'>Stop session</div>
 </section>
     
-
-<%= link_to "Go to your sessions!", user_sessions_path(@user) %></br>
-
-
 <% @highlights.each do |session| %>
     <section id='session'>
         <% user = session.user %>
@@ -59,8 +57,8 @@
         <div id='<%= session.id %>' class='btn-pause button'>Pause session</div>
         <div id='<%= session.id %>' class='btn-stop button'>Stop session</div>
 
-        <%= link_to 'Edit', edit_user_session_path(@user, session) %>
-        <%= link_to 'Remove session', user_session_path(@user, session), method: :delete, data: {confirm: "Are you sure?"} %>
+        <br><%= link_to 'Edit', edit_user_session_path(@user, session) %>
+        <br><%= link_to 'Remove session', user_session_path(@user, session), method: :delete, data: {confirm: "Are you sure?"} %>
     </section>
 <% end %>
 
