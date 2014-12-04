@@ -1,4 +1,7 @@
-<h1>EDIT YOUR SESSION</h1>
+<header class='SoundLink'>
+    <h2>EDIT YOUR SESSION</h2>
+    <p>Sound-Link</p>
+</header>
 
 <section id='session'>
     <%= form_for [@user, @session] do |f| %>
@@ -15,7 +18,7 @@
         <%= f.submit "Update", :class => 'button', :id => 'submit' %>
     <% end %>
 
-    <ul>
+    <ul id='list'>
         <% @session.tracks.each do |track| %>
             <% if track.audio_content_type!=nil %>
                 <li>
@@ -28,6 +31,11 @@
             <% end %>
         <% end %>
     </ul>
-    <%= link_to "Come back to your profile!", user_sessions_path(@user), :class => 'trackname' %>
+    <div id='<%= session.id %>' class='btn-play button'>Play session</div>
+    <div id='<%= session.id %>' class='btn-pause button'>Pause session</div>
+    <div id='<%= session.id %>' class='btn-stop button'>Stop session</div></br>
+    <%= link_to "Come back to your sessions!", user_sessions_path(@user), :class => 'title' %>
 </section>
-
+<footer>
+    <div class='title'><h3>by Franx0</h3></div>
+</footer>

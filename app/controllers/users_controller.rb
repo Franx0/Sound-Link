@@ -2,8 +2,7 @@ require 'services/highlights'
 class UsersController < ApplicationController
     def initialize(*args)
         super(*args)
-        @highlightService = Services::Highlights.new();
-        
+        @highlightService = Services::Highlights.new();   
     end
 
     def index

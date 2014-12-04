@@ -7,9 +7,12 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 user = User.create(user_name: 'Fran', nickname:'Franx0')
-session = Session.create(session_name: 'JamSession', description: 'guitars, saxos and drums', user_id: user.id, from_date: Time.now)
+session = Session.create(session_name: 'Dust In The Wind', description: 'Instrumental', user_id: user.id, from_date: Time.now)
 
 
 user2 = User.create(user_name: 'Ana', nickname:'Anutxa')
-session2 = Session.create(session_name: 'VocalSession', description: 'vocal', user_id: user2.id, from_date: Time.now)
+session2 = Session.create(session_name: 'Jam Session' , description: 'Ninguna', user_id: user2.id, from_date: Time.now)
+
+user3 = User.create(user_name: 'Pablo', nickname:'Pablo')
+session3 = Session.create(session_name: 'Macarron y guarnicion', description: 'Ninguna', user_id: user3.id, from_date: Time.now)
 

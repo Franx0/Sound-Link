@@ -1,9 +1,11 @@
-<header>
+<header class='SoundLink'>
     <h2>Welcome <%= @user.user_name %></h2>
-    <h1>Sound-Link</h1>
+    <p >Sound-Link</p>
 </header>
 
-<h1>Your sessions</h1>
+<div class='title'>
+    <h1>Your sessions</h1>
+</div>
 
 <% if flash[:notice] %>
     <%= flash[:notice] %>
@@ -35,9 +37,13 @@
     <%= link_to 'Remove session', user_session_path(@user, session), method: :delete, data: {confirm: "Are you sure?"} %>
 </section>
 <% end %></br>
-<%= link_to 'Create new session', new_user_session_path %>
-<%= link_to "Come back to your profile", user_path(@user) %>
-
+<div id='links'>
+    <%= link_to 'Create new session', new_user_session_path, :class => 'button' %>
+    <%= link_to "Come back to your profile", user_path(@user), :class => 'button' %>
+</div>
+<footer>
+    <div class='footer'><h3>by Franx0</h3></div>
+</footer>
 
 
 

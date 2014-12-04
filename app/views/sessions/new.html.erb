@@ -1,4 +1,7 @@
-<h1>CREATE YOUR OWN SESSION</h1>
+<header class='SoundLink'>
+    <h2>CREATE YOUR OWN SESSION</h2>
+    <p >Sound-Link</p>
+</header>
 
 <% if flash[:error] %>
   <%= flash[:error] %>
@@ -24,5 +27,8 @@
      <%= f.submit 'Create', :class => 'button' %>
     </div>
   <% end %>
-  <%= link_to "Cancel", user_sessions_path(@user), :class => 'trackname' %>
+  <%= link_to "Cancel", user_sessions_path(@user), :class => 'title' %>
 </section>
+<footer>
+    <div class='title'><h3>by Franx0</h3></div>
+</footer>
